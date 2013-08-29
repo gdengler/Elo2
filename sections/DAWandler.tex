@@ -21,7 +21,7 @@
     \end{tabular} 
 	\\ \hline
 	String DAC (Voltage Scaling) \hartl{459}
-	& \includegraphics[width=5.5cm, valign=t]{pictures/string_DAC}
+	& \includegraphics[width=5cm, valign=t]{pictures/string_DAC}
 	& 
 		\begin{description}
   		\item[Vorteile: ] garantierte Stetigkeit
@@ -33,12 +33,12 @@
 	  	V_{Out_{ideal}}(D) = \frac{D}{2^n}(V_{Refp}-V_{Refn})+V_{Refn}\\
 	  	V_{Out_{real}}(D) = V_{Refn}+\left(V_{Refp}-V_{Refn}\right)\cdot\\
 	  		\cdot\frac{D \cdot R_{Load}}{2^n \cdot R \cdot D-R \cdot D^2 + 2^n (R_{Load} + R_{Switch}) }\\
-	  	DAC_{error}(D)=\frac{V_{Out_{real}}(D)-V_{Out_{ideal}}(D)}{V_{Out_{ideal}}(D)}\\
+	  	DAC_{error}(D)=\frac{V_{Out_{real}}(D)-V_{Out_{ideal}}(D)}{V_{Out_{ideal}}(D)}\\  q = \frac{1}{2^n} \cdot (V_{Refp}-V_{Refn}) \\
 	  \end{align*}}
 	  
 	\\ \hline
 	Segmented String DAC \hartl{459}
-	& \includegraphics[width=5cm, height = 5cm, valign=t]{pictures/segmented_string_DAC}
+	& \includegraphics[width=4cm, height = 4cm, valign=t]{pictures/segmented_string_DAC}
 	& \begin{description}
   		\item[Vorteile: ] viel weniger Elemente
   		\item[Nachteile:] benötigt Buffer (offset-frei)
@@ -100,9 +100,10 @@
     & \includegraphics[width=6cm, valign=t]{./pictures/kapazitiverDACmitAmp.png}
     & {Wenn z.B. B3 auf $V_{Ref1}$ geschaltet wird:\newline
       \begin{align*}
-          Q_{C3} = C_3 \cdot \Delta U &= C_3 \cdot (V_{Ref1}-V_{Ref2})\\
-          \Delta Q_3 = \Delta Q_{fb} &= C_3 \cdot \Delta V_{Ref}\\
-          \Rightarrow \Delta V_{Out} &= \frac{\Delta Q_{fb}}{C_{fb}} = \Delta V_{Ref} \cdot \frac{C_3}{C_{fb}}
+          Q_{C_x} = C_x \cdot \Delta U &= C_x \cdot (V_{Ref1}-V_{Ref2})\\
+          \Delta Q_x = \Delta Q_{fb} &= C_x \cdot \Delta V_{Ref}\\
+          \Rightarrow \Delta V_{Out} &= \frac{-\Delta Q_{fb}}{C_{fb}} + V_{Ref2} = \Delta V_{Ref} \cdot \frac{-C_x}{C_{fb}} + V_{Ref2} \\ 
+          C_x &= B_0 \cdot C_0 + B_1 \cdot C_1 + .... + B_{n-1} \cdot C_{n-1}
       \end{align*}}
     \\ \hline
 \end{longtable}
@@ -115,6 +116,7 @@
 	Grundprinzip \hartl{466}
 	& \includegraphics[width=6cm, valign=t]{./pictures/pwm_DAC.png}
 	& $ V_{Out}=\frac{D}{2^n} \cdot (V_{Refp}-V_{Refn})+V_{Refn} $ \newline
+	$V_{out}(t)= V_{out}0 \cdot e^{\frac{-(t-TO)}{R \cdot C}}$\newline
 	\begin{tabular}{lp{5cm}}
     \textbf{Vorteile:} 
       &-einfache Schaltung \\

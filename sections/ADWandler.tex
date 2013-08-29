@@ -45,11 +45,27 @@
   \hline
 \end{longtable}
 
-\newpage
+
 
 \subsection{Wägeverfahren (sukzessive Approximation/SAR) \hartl{485}}
 \begin{longtable}{|>{\bfseries}p{4cm}|p{6cm}|p{8cm}|}
   \hline
+      Wägeverfahren mit SC-Prinzip &
+      \includegraphics[width=6cm, valign=t]{pictures/waegeverfahrenSC} &
+      \textbf{Ablauf der Wandlung:}
+      \begin{enumerate}
+        \item alle C mit $V_{in}$ laden
+        \item $S_C$ öffnen
+        \item $S_2, \ldots, S_A$ an $A_{GND}$
+        \item Sukzessive $S_2, \ldots, S_0$ an $V_{Ref}$
+      \end{enumerate}
+      Wenn $S_2$ an $V_{Ref}$ ist gilt: $V_x = -V_{in}+\frac{V_{Ref}}{2}$ \newline 
+      $q=(V_{in}-V_{ref})\cdot \frac{C_0}{C_{fb}} $ \newline q = Quantisierungschritt / $C_0$ = kleinstes C in der Schaltung / $C_{fb}$ = C über Opamp \newline 3 db Bandwidth: BW= $\frac{GBP}{gain}$ \newline
+      Rausch-Bandbreite ENB = $\frac{\pi}{2} \cdot BW$
+      
+      \\
+    \hline
+    
     Prinip SAR &
     \includegraphics[width=6cm, valign=t]{pictures/waegeverfahren} &
     \begin{itemize}
@@ -74,17 +90,6 @@
       \item X wird um 1 reduziert
       \item Gehe zu Schritt 3, wenn $X \geq 0$ 
     \end{enumerate} \\
-  \hline
-    Wägeverfahren mit SC-Prinzip &
-    \includegraphics[width=6cm, valign=t]{pictures/waegeverfahrenSC} &
-    \textbf{Ablauf der Wandlung:}
-    \begin{enumerate}
-      \item alle C mit $V_{in}$ laden
-      \item $S_C$ öffnen
-      \item $S_2, \ldots, S_A$ an $A_{GND}$
-      \item Sukzessive $S_2, \ldots, S_0$ an $V_{Ref}$
-    \end{enumerate}
-    Wenn $S_2$ an $V_{Ref}$ ist gilt: $V_x = -V_{in}+\frac{V_{Ref}}{2}$ \\
   \hline
 \end{longtable}
 
@@ -129,11 +134,8 @@ Ist für kontinuierliche Auswertungen des Eingangssignal
 \subsubsection{Dual Slope \hartl{492}}
 \begin{longtable}{cp{12cm}}
   \includegraphics[width=6cm, valign=t]{pictures/dualSlope11} &
-  $\begin{aligned}
- 	T_{int} &= const \\
-  	V_{int}(t) &= -\frac{1}{R_{int}\cdot C_i}\int_{0}^{t} (V_{in}(\tau) - V_{AGND})d\tau + V_{AGND}\\
-   	V_{int}(T_{int}) &= V_{AGND} - \frac{1}{R_{int} \cdot C_i} \cdot T_{int} \cdot (V_{in} - V_{AGND}) \quad \textrm{(Für $V_{in}=$ const.)}\\
-  \end{aligned}$\\
+  $T_{int} =$ const oder wenn nicht gegeben $t(V_{in})=\frac{C_i \cdot R_i \cdot(V_{GNDA}-V{Int}) }{V_{in}-V_{Int}}$ $V_{Int} = V_{GNDA}$ des Zweiten Opamps \newline
+  \[ V_{int} = V_{AGND} - \frac{1}{R_i \cdot C_i} \cdot T_{int} \cdot (V_{in} - V_{AGND})\] \\
  
   \includegraphics[width=6cm, valign=t]{pictures/dualSlope12} &
   \begin{tabular}{p{6cm}p{6cm}}
@@ -141,7 +143,9 @@ Ist für kontinuierliche Auswertungen des Eingangssignal
       \textbf{Abintegration:} \\
   
       \[ V_{int_{max}} = - \dfrac{1}{R_i \cdot C_i} \cdot V_{in1} \cdot T_{int} \] &
-      \[ V_{int}(t) = V_{int_{max}} - \dfrac{V_{Ref}}{R_i \cdot C_i}\cdot t \] 
+      \[ V_{int}(t) = V_{int_{max}} - \dfrac{V_{Ref}}{R_i \cdot C_i}\cdot t \] \\
+      \textbf{Spannungsaufllösung:} & \textbf{maximale Anzahl Clocks}\\
+      $V_{resol} = \frac{dV}{c_{abint_{max}}} $ & $c_{abint_{max}} = T_{ab_{int}} \cdot f_{clk}$
   \end{tabular} \\
   
   \includegraphics[width=6cm, valign=t]{pictures/dualSlope2} &

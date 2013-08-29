@@ -20,9 +20,9 @@
 		$E_{sh}=kT\sqrt{\frac{2B}{qI_{dc}}}$\newline
 		$E_{sh}= 0.4\mu V @ 1mA,1MHz$\newline
         
-		k: Bolzmannkonstante ($1.38 \cdot 10^{-23}$Joule/$^\circ$K)\newline
+		k: Bolzmannkonstante ($1.38 \cdot 10^{-23}$Joule/K)\newline
 		q: Elektronenladung ($1.6 \cdot 10^{-19}$Coulomb)\newline
-		T: Temperatur in $^\circ$K\newline
+		T: Temperatur in K\newline
 		$I_{dc}$: Durchschnittlicher DC Strom in A\newline
 		B: Bandbreite in Hz
       }
@@ -79,7 +79,7 @@
 \end{longtable}
 % ----------------------------------------------------------------------------------------------------
 \vspace{-2.5\topsep}
-\renewcommand{\arraystretch}{1.8}
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{|p{5cm}|p{12.9cm}|}
     \hline
     \multicolumn{2}{|l|}{\bf Leistung des Rauschens}
@@ -96,14 +96,16 @@
     \multicolumn{2}{|l|}{$V_{n_{pp}} \backsimeq 6 \cdot V_{noise_{TRMS}}$}
     \\ \hline
     \multicolumn{2}{|l|}{\parbox{17.9cm}{\vspace{2mm}
-        Rechnen mit Rauschen: \textcolor{red}{Signale und Rauschen addieren sich nicht gleich}:
+        Rechnen mit Rauschen: Signale und Rauschen addieren sich nicht gleich:
         \begin{itemize}
-            \item deterministische Signale: \textcolor{red}{Amplituden addieren sich}
-            \item statistisch unabhängige Rauschquellen: \textcolor{red}{Rauschleistung addiert sich}
+            \item deterministische Signale: Amplituden addieren sich
+            \item statistisch unabhängige Rauschquellen: 
+            Rauschleistung addiert sich
         \end{itemize}\vspace{2mm}}}
     \\ \hline
 \end{longtable}
 % ----------------------------------------------------------------------------------------------------
+\renewcommand{\arraystretch}{1.2}
 \vspace{-2.5\topsep}
 \begin{longtable}[t]{|p{4cm}|p{6.5cm}|p{7cm}|}
     \hline
@@ -141,8 +143,20 @@
     }
     & \textbf{Nicht die Rausch-Spannungen, sondern die Rausch-Leistungen müssen addiert werden!}
     \\ \hline
-\end{longtable}
-% ----------------------------------------------------------------------------------------------------  
+
+     \multicolumn{3}{|l|}{\textit{Widerstände in Parallel}}
+     \\ \hdashline
+     \input{tikz/rauschen_parallel}
+     & { 	\vspace{-6\topsep }
+         \begin{align*}
+             \overline{v^2_{n}}&=4kT(\frac{1}{R1}+\frac{1}{R2})^{-1}B=\overline{v^2_{n1}}+\overline{v^2_{n2}}\\
+             \overline{i^2_{n}}&=4kT(\frac{1}{G1}+\frac{1}{G2})^{-1}B=\overline{i^2_{n1}}+\overline{i^2_{n2}}
+         \end{align*}
+     }
+     & \vspace{-6\topsep } \textbf{Nicht die Rausch-Spannungen, sondern die Rausch-Leistungen müssen addiert werden!}
+     \\ \hline
+ \end{longtable}
+ %---------------------------------------------------------------------------------------------------- 
 \begin{longtable}[t]{|p{4cm}|p{5.2cm}|p{7cm}|}    
     \hline 
     \multicolumn{3}{|l|}{\textit{Spannungsteiler}}
@@ -159,7 +173,7 @@
             V_{n_{out}}^2 &= \left[ S_{R_1}\left( \frac{R_2}{R_1 + R_2}\right) ^2 + S_{R_2}\left( \frac{R_1}{R_1 + R_2}\right) ^2\right] B \\
             &= 4kT\left( R_1 \frac{R_2^2}{(R_1+R_2)^2} + R_2 \frac{R_1^2}{(R_1+R_2)^2}\right) B\\
             &= 4kT \cdot \frac{R_1 \cdot R_2}{R_1 + R_2}\cdot B\\
-            V_{n_{out}} &= \sqrt{\mathrel{\mathop{V_{nR1}^2}\limits_{\substack{\uparrow\\\hbox to 0pt{\hss{\textcolor{red}{\tiny $4kT R_1 B$}}\hss}}}} \left( \frac{R_2}{R_1+R_2}\right) ^2 + \mathrel{\mathop{V_{nR2}^2}\limits_{\substack{\uparrow\\\hbox to 0pt{\hss{\textcolor{red}{\tiny $4kT R_2 B$}}\hss}}}} \left( \frac{R_1}{R_1+R_2}\right) ^2}\\
+            V_{n_{out}} &= \sqrt{\mathrel{\mathop{V_{nR1}^2}\limits_{\substack{\uparrow\\\hbox to 0pt{\hss{\textbf{\tiny $4kT R_1 B$}}\hss}}}} \left( \frac{R_2}{R_1+R_2}\right) ^2 + \mathrel{\mathop{V_{nR2}^2}\limits_{\substack{\uparrow\\\hbox to 0pt{\hss{\textbf{\tiny $4kT R_2 B$}}\hss}}}} \left( \frac{R_1}{R_1+R_2}\right) ^2}\\
             &= \sqrt{4kT \cdot \frac{R_1 \cdot R_2}{R_1 + R_2}\cdot B}
         \end{align*}
       }
@@ -230,11 +244,11 @@
         \begin{align*}
             e_{on} &= \sqrt{\int_{0}^{\infty} \left| A_{n(f)}\right| ^2 e_{in}^2 \, df}\\
             A_{n(f)} &= \frac{1}{1+ j2\pi fRC} \Rightarrow \left| A_{n(f)}\right| ^2 = \frac{1}{1+(2\pi fRC)^2}\\
-            e_{on} &= e_{in} \sqrt{\int_{0}^{\infty} \frac{1}{1 + (2\pi fRC)^2}df} = e_{in} \sqrt{\underbrace{\frac{1}{2\pi RC}\frac{\pi}{2}}_{\textcolor{red}{ENB}}}\\
+            e_{on} &= e_{in} \sqrt{\int_{0}^{\infty} \frac{1}{1 + (2\pi fRC)^2}df} = e_{in} \sqrt{\underbrace{\frac{1}{2\pi RC}\frac{\pi}{2}}_{\textbf{ENB}}}\\
             &= e_{in} \sqrt{\frac{1}{4RC}}
         \end{align*}
         \begin{tabbing}
-            {\bf Filter-Ordnung}\qquad \= {\bf \textcolor{red}{ENB}}\\
+            {\bf Filter-Ordnung}\qquad \= {\textbf{ENB}}\\
             1 \> $1.57 \cdot f_c$\\
             2 \> $1.11 \cdot f_c$\\
             3 \> $1.05 \cdot f_c$\\
@@ -244,7 +258,7 @@
     & {$\mathrm{\bf e_{on}}$: Rauschspannung am Ausgang der Schaltung\newline\newline
        $\mathrm{\bf e_{in}}$: Rauschspannung am Eingang der Schaltung\newline\newline
        $\mathrm{\bf f_c}$: 3dB-Frequenz \newline\newline
-       {\bf \textcolor{red}{ENB}}: Effective Noise Bandwidth\newline
+       {\textbf{ENB}}: Effective Noise Bandwidth\newline
        Es wird nicht die 3dB-Bandbreite, sondern das gesamte integrierte Rauschen berechnet
       }
     \\ \hline
@@ -271,7 +285,8 @@
       \item  Ausgangsrauschspannung: $\boxed{V_{n_{out}} = E_{out_{tot}} \cdot \sqrt{ENB}}$
     \end{enumerate}
 
-    Grundsätzlich gilt, jede Rauschspannungsquelle einzeln betrachten und auf den Ausgang projizieren. 
+    Grundsätzlich gilt, jede Rauschspannungsquelle einzeln betrachten und auf den Ausgang projizieren.  \newline
+    Für 1 Opamp gilt vereinfacht $ V_{nois_{out}} = E_{noise} \cdot gain \cdot \sqrt{ENB}$
     \newline
     \newline
     $E$: Rauschspannungsdichte $[V/\sqrt{Hz}]$ \newline
