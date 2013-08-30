@@ -46,11 +46,15 @@ Der Operationsverstärker ist in allgemeiner Näherung ein Tiefpass-Filter n-ter
  \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{m{0.45\linewidth}m{0.45\linewidth}}
 	Durch das Schliessen des Loops wird die Bandbreite vergrössert, das gain-bandwidth-product(GBP) bleibt jedoch konstant. Die Verstärkung wird jedoch um $T_{s0}(s)$ (Linearer Loop Gain) reduziert. Der Phasengang wird durch das Verschieben des ersten Poles auch verändert, wie folgende Grafik zeigt.
+	\subsubsection{Open Loop Gain und Pole aus Bodediagramm lesen}
+	Der Open Loop Gain lösst sich bei $\omega \Rightarrow 0 $ auslesen\newline 
+	Die Pole liegen da, wo die Phase sich um 45\textdegree ändert. \newline
 	& \begin{center}
         \includegraphics[width=6.7cm, valign=t]{./pictures/AolAcl.png}
     \end{center}
 \end{tabular}
 \vspace{-7mm}
+
 \subsection{Stabilität des Systems}
 \begin{tabular}{m{0.45\linewidth}m{0.45\linewidth}}
     Um die Stabilität des OpAmps zu betrachten, wird der Loop geöffnet. Damit das System stabil ist, darf das       
