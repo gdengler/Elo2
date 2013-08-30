@@ -118,7 +118,7 @@
   \hline
 \end{longtable}
 
-
+\newpage
 
 \subsection{Zählverfahren \hartl{490}} 
 Ist für kontinuierliche Auswertungen des Eingangssignal
@@ -142,9 +142,8 @@ Ist für kontinuierliche Auswertungen des Eingangssignal
   \begin{tabular}{p{6cm}p{6cm}}
       \textbf{Integration:} &
       \textbf{Abintegration:} \\
-  
-      \[ V_{int_{max}} = - \dfrac{1}{R_i \cdot C_i} \cdot V_{in1} \cdot T_{int} \] &
-      \[ V_{int}(t) = V_{int_{max}} - \dfrac{V_{Ref}}{R_i \cdot C_i}\cdot t \] \\
+      \[ V_{int_{max}} = V_{AGND}- \dfrac{V_{in}-V_{AGND}}{R_i \cdot C_i} \cdot T_{int} \] &
+      \[ V_{int}(t) = V_{int_{max}} - \dfrac{V_{Ref}-V_{AGND}}{R_i \cdot C_i}\cdot t \]  \\
       \textbf{Spannungsaufllösung:} & \textbf{maximale Anzahl Clocks}\\
       $V_{resol} = \frac{dV}{c_{abint_{max}}} $ & $c_{abint_{max}} = T_{ab_{int}} \cdot f_{clk}$
   \end{tabular} \\
@@ -153,9 +152,9 @@ Ist für kontinuierliche Auswertungen des Eingangssignal
   \begin{tabular}{p{4cm}p{7cm}}
       \textbf{Abintegrationszeit:} &
       \textbf{Auflösung in Bits:} \\
-  
-      \[ t_{ab_{int}} = -\dfrac{V_{in1} \cdot T_{int}}{V_{Ref}} \] &
-      \[ n = \dfrac{\log (\text{max Taktzyklen von Abintegration})}{\log(2)} \] 
+      
+      $ t_{abint} = \frac{T_{int}\cdot (V_{AGND}-V_{in})}{V_{Ref}-V_{AGND}} $ &
+      $ n = \log _2 (\text{max Taktzyklen von Abintegration}) $ \\
   \end{tabular}
   \[ V_{in} = \frac{n}{N} \cdot V_{ref} \]
   
