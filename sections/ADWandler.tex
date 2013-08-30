@@ -61,7 +61,8 @@
       \end{enumerate}
       Wenn $S_2$ an $V_{Ref}$ ist gilt: $V_x = -V_{in}+\frac{V_{Ref}}{2}$ \newline 
       $q=(V_{in}-V_{ref})\cdot \frac{C_0}{C_{fb}} $ \newline q = Quantisierungschritt / $C_0$ = kleinstes C in der Schaltung / $C_{fb}$ = C über Opamp \newline 3 db Bandwidth: BW= $\frac{GBP}{gain}$ \newline
-      Rausch-Bandbreite ENB = $\frac{\pi}{2} \cdot BW$
+          Digitaler Wert $D = floor\left( \frac{V_{in}}{q}\right)$ \newline
+          nicht aufgelöste Spannung: $V_{rest} = V_{in} \ mod \ q$
       
       \\
     \hline
