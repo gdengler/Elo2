@@ -1,6 +1,6 @@
 # Elo2 - Elektronik 2
 
-Verantwortlich: Anina Schälle
+Verantwortlich: Gregor Dengler
 
 ## Plan und Lerninhlat
 
@@ -15,6 +15,4 @@ Nach unterricht.hsr.ch:
 
 Achtung, nach Gido Keel sieht das ganz anders aus!
 
-## Braches in diesem Repo:
- * **master**: Lange Version der Zusammenfassung
- * **short**: Kurze Version der Zusammenfassung, für die Prüfung
+Keine Garantie f�r die Richtigkeit der hier verwendeten Formeln !
